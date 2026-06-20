@@ -1,18 +1,38 @@
 # review-agent
 
-This directory is the Raspberry Pi 5 service from the plan.
+This folder documents the Raspberry Pi 5 service from the plan.
 
-It will eventually contain:
+The actual runnable code now lives under [`src/review_agent/`](/Users/ali/Desktop/Codes/localhost-hack/src/review_agent).
 
-- `agent.py` for the FastAPI webhook receiver
-- `screenshot.py` for Playwright captures
-- `captur_validate.py` for screenshot quality checks
-- `vision.py` for Moondream captions
-- `code_review.py` for MLX-powered diff review
-- `memory.py` for Cognee history
-- `tracer.py` for Overmind traces
-- `dashboard.py` for the optional review dashboard
-- `config.py` for RPi settings
-- `setup.sh` for one-command bootstrap
+## What it provides
 
-For now this folder documents the target runtime layout and the setup commands in the root README.
+- `review-agent` console command
+- `python -m review_agent` entrypoint
+- `/webhook` POST handler
+- `/review` HTML output
+- `/review/raw` markdown output
+- screenshot capture via Chromium
+- local vision captioning through Ollama
+- local code review through Ollama
+
+## Pi-first model choice
+
+- Vision: `moondream`
+- Code review: `qwen2.5-coder:1.5b`
+
+## Run
+
+After copying the repo to the Pi and setting `.env`:
+
+```bash
+pip install -e .
+review-agent
+```
+
+Or:
+
+```bash
+python -m review_agent
+```
+
+The Pi should then listen on `REVIEW_AGENT_PORT` and expose the review routes through Caddy.

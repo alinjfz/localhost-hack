@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-echo "This repository currently ships the setup instructions in README.md."
-echo "Use the root README to provision the Raspberry Pi 5 review-agent environment."
+echo "This repository ships the review-agent code under src/review_agent."
+echo "On the Raspberry Pi, run:"
+echo "  cp .env.example .env"
+echo "  pip install -e ."
+echo "  review-agent"
