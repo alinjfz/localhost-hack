@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.env
+.venv/
+venv/
+*.egg-info/
+dist/
+build/
+.cognee_system/
+cognee_db/
+*.db
+*.sqlite
+*.log
+.DS_Store
+node_modules/
